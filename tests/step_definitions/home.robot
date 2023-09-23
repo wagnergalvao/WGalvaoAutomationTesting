@@ -16,18 +16,10 @@ exibe a página home
     [Documentation]    Exibe, valida, evidencia os elementos da página e fecha o browser
 
     Wait Until Element Is Enabled    ${sign_in_button}
-    evidencia elemento               ${sign_in_button}
-
     Wait Until Element Is Enabled    ${skip_sign_in_button}
-    evidencia elemento               ${skip_sign_in_button}
-
     Wait Until Element Is Enabled    ${logo_img}
-    evidencia elemento               ${logo_img}
-
     Wait Until Element Is Visible    ${email_input}
-    evidencia elemento               ${email_input}
-
     Wait Until Element Is Enabled    ${enter_img}
-    evidencia elemento               ${enter_img}
 
+    evidencia página
     fecha navegadores

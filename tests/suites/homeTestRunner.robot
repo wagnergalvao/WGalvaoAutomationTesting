@@ -1,6 +1,8 @@
 *** Settings ***
 Documentation    Configurações globais para compartilhamento em todo projeto
 
+Suite Setup       Limpa arquivos de teste
+
 Resource    ${EXECDIR}/config/config.robot
 
 *** Variables ***
@@ -15,8 +17,9 @@ Executar Testes BDD
     Log    ${result.stdout}
     Should Not Contain    ${result.stderr}    ERROR
 
+    Remove Files    ${EXECDIR}/*.log
+    Remove Files    ${EXECDIR}/*.*ml
+
 *** Test Cases ***
-Executar Testes BDD da página Home
-    [Documentation]        Executa testes BDD da página Home
-    [Tags]                 Home_Functional_Test
-    Executar Testes BDD    homeFunctionalTest.robot
+
+Run Keyword    Executar Testes BDD    homeFunctionalTest.robot
