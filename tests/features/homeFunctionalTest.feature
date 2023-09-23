@@ -1,9 +1,9 @@
-Feature: Abrir a página automation testing com diferentes navegadores
+Feature: Abrir a pagina automation testing com diferentes navegadores
 
-  Scenario Outline: Abrir a página no navegador "<Browser>"
+  Scenario Outline: Abrir a pagina no navegador "<Browser>"
     Dado que eu tenho o navegador "<Browser>"
-    Quando eu abro  a página automation testing
-    Então é exibida a página Index
+    Quando eu acesso a url "<url>"
+    Então exibe a página home
 
     Examples:
       | Browser         |
