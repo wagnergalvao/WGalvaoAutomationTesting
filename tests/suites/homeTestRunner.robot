@@ -13,12 +13,9 @@ ${file_path}    ${EXECDIR}/tests/features
 Executar Testes BDD
     [Arguments]    ${feature_file}
     
-    ${result} =    Run Process    robot    tests/features/${feature_file}
+    ${result} =    Run Process    robot        -d results/    tests/features/${feature_file}
     Log    ${result.stdout}
     Should Not Contain    ${result.stderr}    ERROR
-
-    Remove Files    ${EXECDIR}/*.log
-    Remove Files    ${EXECDIR}/*.*ml
 
 *** Test Cases ***
 

@@ -10,12 +10,15 @@ Library           SeleniumLibrary
 *** Variables ***
 ${BROWSER}             Chrome
 ${BASE_URL}            https://demo.automationtesting.in
+${GO_TO_URL}           ${BASE_URL}
 ${PAGE_TITLE}          //title[text()='Index']
 ${TIME_OUT}            15
 @{NAVEGADORES}         Chrome    Firefox    Edge
-${min_width}           1382
-${min_height}          744
+${MIN_WIDTH}           1382
+${MIN_HEIGHT}          744
 ${OUTPUTDIR}           ${EXECDIR}/results
+${SCREENSHOT}          true
+${FIRST_INDEX}         0
 
 *** Keywords ***
 
@@ -50,28 +53,18 @@ que eu tenho o navegador '${browser}'
     [Documentation]    Configura o navegador de automação com base no argumento fornecido
 
     Open Browser                      about:blank    ${browser}
-    Set Window Size                   ${min_width}    ${min_height}
+    Set Window Size                   ${MIN_WIDTH}    ${MIN_HEIGHT}
     Set Selenium Timeout              ${TIME_OUT}
     Set Selenium Page Load Timeout    30
+    Location Should Be    about:blank
 
 eu acesso a url '${url}'
     [Documentation]    Navego até a url
     Go To   ${url}
     Wait Until Element Is Enabled     ${PAGE_TITLE}
 
-evidencia página
-    [Documentation]    Gera evidência de página
-    Capture Page Screenshot
+que eu estou na página automation testing pelo '${navegador}'
+    [Documentation]    Navego até a url
 
-evidencia elemento
-    [Arguments]        ${element}
-    [Documentation]    Gera evidência do elemento da página
-    Capture Element Screenshot    ${element}
-
-fecha navegador
-    [Documentation]    Fecha o navegador aberto
-    Close Browser
-
-fecha navegadores
-    [Documentation]    Fecha todos navegadores abertos
-    Close All Browsers
+    que eu tenho o navegador '${navegador}'
+    eu acesso a url '${GO_TO_URL}'
